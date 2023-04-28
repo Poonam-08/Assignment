@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - Brand</title>
+   <script id="cookiezen" type="text/javascript" src="https://local.test/embed/b304356f90263bb1f840d531f08dbc23/script.js" defer></script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T64CLVJ');</script>
+<!-- End Google Tag Manager -->
+
+<!-- Clarity -->
+    <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "gbnyvrindf");
+
+const cookies = [];
+var val="";
+
+function setCookie(cname,cvalue,exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  let expires = "expires=" + d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+function hide(){
+	document.getElementById("cval1").style.display = "none";
+	document.getElementById("cval").style.display = "none";
+    document.getElementById("resubmit").style.display="none";
+}
+
+function resubmit(){
+	val=document.getElementById("cval").value;
+    addCookie();
+    hide();
+}
+
+function addCookie(){
+	let cookiename = document.getElementById("cname").value;
+    const f = cookies.entries();
+	var flag=false;
+	for (let x of f) {
+		for(let y of x[1]){
+        	if(flag==true){
+            	val=y;
+                flag=false;
+            }
+    		if(y==cookiename){
+            	flag=true;
+            }
+    	}
+	}
+    if(val==""){
+        document.getElementById("cval1").style.display = "block";
+        document.getElementById("cval").style.display = "block";
+        document.getElementById("resubmit").style.display="block";
+    }
+    if(val!="" && val!=null){
+    	setCookie(cookiename,val,365);
+		document.getElementById("demo").innerHTML="Cookie added";
+    }else{
+    	document.getElementById("demo").innerHTML="Cookie value not set";
+    }
+}
+
+function deleteCookie(){
+	let cookiename = document.getElementById("cname").value;
+    let cvalue=getCookie(cookiename);
+    if(cvalue=""){
+    	document.getElementById("demo").innerHTML="Cookie does not exist";
+    }
+    const c=[cookiename,cvalue];
+    cookies.push(c);
+    document.cookie = cookiename+"=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.getElementById("demo").innerHTML="Cookie deleted";
+}
+
+
+</script>
+
+</head>
+<body onload="hide()">
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T64CLVJ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<iframe src="https://www.w3schools.com" title="W3Schools Free Online Web Tutorials"></iframe>
+  <br>
+
+<br><br>
+<label for="cname">Enter Cookie Name:</label>
+<input type="text" name="cname" id="cname"><br><br>
+<button onclick="deleteCookie()">Delete Cookie</button>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<button onclick="addCookie()">Add Cookie</button>
+<p id="demo"></p>
+<label id="cval1" for="cval">Enter Cookie Value:</label>
+<input type="text" name="cval" id="cval"><br><br>
+<button onclick="resubmit()" id="resubmit">Resubmit</button>
+  
+</body>
+</html>
